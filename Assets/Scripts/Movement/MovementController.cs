@@ -52,4 +52,6 @@ public class MovementController : MonoBehaviour, IMovable
             onDialogue?.Invoke(other.gameObject.transform.position, other.gameObject.GetComponent<Entity>().Description);
         }
     }
+
+    // TODO: на выходе скрывать
 }

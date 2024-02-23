@@ -26,6 +26,12 @@ public class InputManager : MonoBehaviour
 
     private void Movement()
     {
-        _playerMovement.Move(_playerInput.Player.Move.ReadValue<Vector2>());
+        Vector2 direction = _playerInput.Player.Move.ReadValue<Vector2>();
+        if (direction == Vector2.zero)
+        {
+            return;
+        }
+
+        _playerMovement.Move(direction);
     }
 }
