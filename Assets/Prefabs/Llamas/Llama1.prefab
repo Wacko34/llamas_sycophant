@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2522373353551552145
+--- !u!1 &2611561965545061216
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4866999001035671561}
-  - component: {fileID: 4280811882731442960}
-  - component: {fileID: 2234923601943032069}
-  - component: {fileID: 4151847367436182814}
-  - component: {fileID: 6219064730161489657}
+  - component: {fileID: 5044761932706701559}
+  - component: {fileID: 756678231618115612}
+  - component: {fileID: 7372372627313740606}
+  - component: {fileID: 1893523161046024356}
+  - component: {fileID: 5019129646243882211}
   m_Layer: 0
   m_Name: Llama1
   m_TagString: Untagged
@@ -20,36 +20,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4866999001035671561
+--- !u!4 &5044761932706701559
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2522373353551552145}
+  m_GameObject: {fileID: 2611561965545061216}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.4067905, y: -4.573237, z: 0.030347824}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4280811882731442960
+--- !u!33 &756678231618115612
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2522373353551552145}
+  m_GameObject: {fileID: 2611561965545061216}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2234923601943032069
+--- !u!23 &7372372627313740606
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2522373353551552145}
+  m_GameObject: {fileID: 2611561965545061216}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,13 +85,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4151847367436182814
+--- !u!65 &1893523161046024356
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2522373353551552145}
+  m_GameObject: {fileID: 2611561965545061216}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -106,27 +106,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6219064730161489657
+--- !u!114 &5019129646243882211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2522373353551552145}
+  m_GameObject: {fileID: 2611561965545061216}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb18f86a14458964991231e8927aafb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _hobbies:
-  - "\u041A\u0443\u0448\u0430\u0442\u044C"
+  - "\u041A\u0443\u043B\u0438\u043D\u0430\u0440\u0438\u044F"
   - "\u041F\u0435\u0440\u0441\u0438\u043A\u0438"
   - "\u0423\u0435\u0434\u0438\u043D\u0435\u043D\u0438\u0435 \u0441 \u043F\u0440\u0438\u0440\u043E\u0434\u043E\u0439"
   - "\u0421\u0430\u0434\u043E\u0432\u043E\u0434\u0441\u0442\u0432\u043E"
   - "\u0414\u043E\u043C\u043E\u0441\u0435\u0434\u0441\u0442\u0432\u043E"
+  - "\u0412\u044B\u0440\u0430\u0449\u0438\u0432\u0430\u043D\u0438\u0435 \u043A\u0430\u0440\u0442\u043E\u0448\u043A\u0438"
+  - "\u042D\u043A\u043E\u043B\u043E\u0433\u0438\u044F"
   _qualities:
   - "\u0421\u043F\u043E\u043A\u043E\u0439\u0441\u0442\u0432\u0438\u0435"
   - "\u0422\u0435\u0440\u043F\u0435\u043D\u0438\u0435"
-  - "\u0420\u0435\u0434\u043A\u0438\u0439 \u0432\u043A\u0443\u0441"
+  - "\u0423\u0442\u043E\u043D\u0447\u0435\u043D\u043D\u044B\u0439 \u0432\u043A\u0443\u0441"
+  - "\u0423\u043F\u043E\u0440\u0441\u0442\u0432\u043E"
   _antipathies:
   - "\u0410\u0432\u0430\u043D\u0442\u044E\u0440\u0438\u0437\u043C"
+  - "\u0411\u044B\u0442\u043E\u0432\u0430\u044F \u0445\u0438\u043C\u0438\u044F"
+  - "\u0417\u0430\u0433\u0440\u044F\u0437\u043D\u0435\u043D\u0438\u044F"

@@ -7,7 +7,25 @@ public class Entity : MonoBehaviour
     public List<string> Hobbies => _hobbies;
     public List<string> Qualities => _qualities;
     public List<string> Antipathies => _antipathies;
-    [SerializeField] private List<string> _hobbies; // Хобби, Род деятельности
-    [SerializeField] private List<string> _qualities; // Качества
-    [SerializeField] private List<string> _antipathies; // Антипатии
+    [SerializeField] private List<string> _hobbies;
+    [SerializeField] private List<string> _qualities;
+    [SerializeField] private List<string> _antipathies;
+
+    private void Awake() 
+    {
+        for (int i = 0; i < _hobbies.Count; i++)
+        {
+            _hobbies[i] = _hobbies[i].ToLower().Trim();
+        }
+
+        for (int i = 0; i < _qualities.Count; i++)
+        {
+            _qualities[i] = _qualities[i].ToLower().Trim();
+        }
+
+        for (int i = 0; i < _antipathies.Count; i++)
+        {
+            _antipathies[i] = _antipathies[i].ToLower().Trim();
+        }
+    }
 }

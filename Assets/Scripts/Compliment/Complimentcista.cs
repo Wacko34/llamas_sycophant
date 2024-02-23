@@ -7,43 +7,61 @@ public class Complimentcista : MonoBehaviour
 {
     [SerializeField] private List<Entity> _entities;
     [SerializeField] private List<Compliment> _compliments;
+    [SerializeField] private string _defaultComplimet; 
 
     // Событие на комплимент
     public void SayComplimentToGroup()
     {
         int[] grades = new int[_compliments.Count];
+        int complimentNumber = 0;
+
+        Compliment resultCompliment = gameObject.AddComponent<Compliment>();
+        resultCompliment.ComplimentValue = "";
 
         for (int i = 0; i < _compliments.Count; i++)
         {
             grades[i] = 0;
         }
         
-        int c = 0;
+        
         foreach (Compliment compliment in _compliments)
         {
             foreach (Entity entity in _entities)
             {
-                // TODO: Привести комплименты в нижний регистр, удалить лишние пробелы
-                bool isHobbyIntersect = compliment.Hobbies.Intersect(entity.Hobbies).Any();
-                bool isQualityIntersect = compliment.Qualities.Intersect(entity.Qualities).Any();
-                bool isAntipathyIntersect = compliment.Antipathies.Intersect(entity.Antipathies).Any();
-
-                if (isHobbyIntersect && isQualityIntersect && !isAntipathyIntersect)
+                if (entity.Antipathies.Intersect(compliment.Hobbies).Any()
+                    || entity.Antipathies.Intersect(compliment.Qualities).Any()
+                )
                 {
-                    grades[c]++;
+                    grades[complimentNumber] = 0;
+                    break;
+                }
+
+                if (compliment.Hobbies.Intersect(entity.Hobbies).Any()
+                    && compliment.Qualities.Intersect(entity.Qualities).Any()
+                )
+                {
+                    grades[complimentNumber]++;
                 }
             }
-            c++;
-        }
-        // TODO: Убрать дебаги
-        int maxIndex = grades.ToList().IndexOf(grades.Max());
-        foreach (int grade in grades)
-        {
-            Debug.Log(grade);
+            complimentNumber++;
         }
 
-        Debug.Log($"maxIndex is {maxIndex}");
-        Debug.Log(_compliments[maxIndex].SayCompliment());
+        for (int i = 0; i < _compliments.Count; i++)
+        {
+            if (grades[i] > 0)
+            {
+                resultCompliment.ComplimentValue += $" {_compliments[i].ComplimentValue}";
+            }
+        }
+
+        if (resultCompliment.ComplimentValue != "")
+        {
+            Debug.Log(resultCompliment.ComplimentValue);
+        }
+        else 
+        {
+            Debug.Log(_defaultComplimet);
+        }
     }
 
     private void Awake() 
