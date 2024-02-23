@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class MovementController : MonoBehaviour, IMovable
 {
+    public delegate void DialogueHandler(Vector3 pozition, string text);
+    public static event DialogueHandler onDialogue;
     public float MovementSpeed
     {
         get { return _movementSpeed; }
@@ -44,7 +46,7 @@ public class MovementController : MonoBehaviour, IMovable
     {
         if (other.gameObject.layer.Equals(LayerMask.NameToLayer("Llamas")))
         {
-            Debug.Log(other.gameObject.GetComponent<Entity>().Description);
+            onDialogue?.Invoke(other.gameObject.transform.position, other.gameObject.GetComponent<Entity>().Description);
         }
     }
 }
