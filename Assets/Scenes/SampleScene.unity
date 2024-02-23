@@ -123,32 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &30073835 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1909484939174432220, guid: cdf92724f8b52c14f83bb2042ad5a183, type: 3}
-  m_PrefabInstance: {fileID: 8513686299252084408}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &30073845
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30073835}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.54, y: 1.28, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!108 &705507994 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 2299917852366215775, guid: a0dfb293b8563f64691b8a2dda5a045b, type: 3}
@@ -843,10 +817,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Directional Light
       objectReference: {fileID: 0}
-    - target: {fileID: 7616871410331134864, guid: a0dfb293b8563f64691b8a2dda5a045b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -863,10 +833,6 @@ PrefabInstance:
     - target: {fileID: 6306116917263673249, guid: f4a9d1066aed89b4f85ee306d7dc5cd5, type: 3}
       propertyPath: m_Name
       value: Main Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 7721591854699118602, guid: f4a9d1066aed89b4f85ee306d7dc5cd5, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8169123669839000033, guid: f4a9d1066aed89b4f85ee306d7dc5cd5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -983,18 +949,6 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3211896352031280018, guid: cdf92724f8b52c14f83bb2042ad5a183, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.0462499
-      objectReference: {fileID: 0}
-    - target: {fileID: 3211896352031280018, guid: cdf92724f8b52c14f83bb2042ad5a183, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.0462499
-      objectReference: {fileID: 0}
-    - target: {fileID: 3211896352031280018, guid: cdf92724f8b52c14f83bb2042ad5a183, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3.0462499
-      objectReference: {fileID: 0}
-    - target: {fileID: 3211896352031280018, guid: cdf92724f8b52c14f83bb2042ad5a183, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.37
       objectReference: {fileID: 0}
@@ -1037,10 +991,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1909484939174432220, guid: cdf92724f8b52c14f83bb2042ad5a183, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 30073845}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdf92724f8b52c14f83bb2042ad5a183, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
