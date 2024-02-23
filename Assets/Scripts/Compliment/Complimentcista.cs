@@ -14,9 +14,7 @@ public class Complimentcista : MonoBehaviour
     {
         int[] grades = new int[_compliments.Count];
         int complimentNumber = 0;
-
         Compliment resultCompliment = gameObject.AddComponent<Compliment>();
-        resultCompliment.ComplimentValue = "";
 
         for (int i = 0; i < _compliments.Count; i++)
         {

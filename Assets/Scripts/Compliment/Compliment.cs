@@ -17,6 +17,16 @@ public class Compliment : MonoBehaviour
 
     private void Awake() 
     {
+        if (_complimentValue == null)
+        {
+            _complimentValue = "";
+        }
+
+        if (_hobbies == null || _qualities == null)
+        {
+            return;
+        }
+
         for (int i = 0; i < _hobbies.Count; i++)
         {
             _hobbies[i] = _hobbies[i].ToLower().Trim();
