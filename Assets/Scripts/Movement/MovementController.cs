@@ -5,6 +5,7 @@ public class MovementController : MonoBehaviour, IMovable
 {
     public delegate void DialogueHandler(Vector3 pozition, string text);
     public static event DialogueHandler onDialogue;
+    private SpriteRenderer _spriteRenderer;
     public float MovementSpeed
     {
         get { return _movementSpeed; }
@@ -27,6 +28,7 @@ public class MovementController : MonoBehaviour, IMovable
         Vector3 currentVelocity = _rigidbody.velocity;
         Vector3 targetVelocity = new Vector3(direction.x, direction.y, 0);
         targetVelocity *= _movementSpeed;
+        _spriteRenderer.flipX = direction.x < 0;
 
         _rigidbody.AddForce(targetVelocity - currentVelocity, ForceMode.VelocityChange);
     }
@@ -40,6 +42,7 @@ public class MovementController : MonoBehaviour, IMovable
     {
         _rigidbody = gameObject.GetComponent<Rigidbody>();
         _rigidbody.freezeRotation = true;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter(Collider other) 
