@@ -17,6 +17,8 @@ public class InputManager : MonoBehaviour
         {
             Debug.LogWarning("There Is No IMovable object");
         }
+
+        _playerInput.Player.Jump.started += context => Jump();
     }
 
     private void FixedUpdate()
@@ -33,5 +35,10 @@ public class InputManager : MonoBehaviour
         }
 
         _playerMovement.Move(direction);
+    }
+
+    private void Jump()
+    {
+        _playerMovement.Jump();
     }
 }

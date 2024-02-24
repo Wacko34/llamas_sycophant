@@ -77,6 +77,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 4
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _height: 2.02
+  _jumpForce: 5
 --- !u!114 &7044744027567786659
 MonoBehaviour:
   m_ObjectHideFlags: 0
