@@ -29,10 +29,10 @@ public class InputManager : MonoBehaviour
     private void Movement()
     {
         Vector2 direction = _playerInput.Player.Move.ReadValue<Vector2>();
-        if (direction == Vector2.zero)
-        {
-            return;
-        }
+        // if (direction == Vector2.zero)
+        // {
+        //     return;
+        // }
 
         _playerMovement.Move(direction);
     }
