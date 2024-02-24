@@ -6,7 +6,7 @@ using UnityEngine;
 public class Dialogue : MonoBehaviour
 {
     [SerializeField] private float _distanceFromEntity = 2;
-    public void StartDialogue(Vector3 position, string text)
+    public void SayMessage(Vector3 position, string text)
     {
         gameObject.transform.position = new Vector3(position.x, position.y + _distanceFromEntity, position.z);
         GameObject textObj = gameObject.transform.Find("dialogueText").gameObject;
@@ -18,6 +18,7 @@ public class Dialogue : MonoBehaviour
     private void Awake()
     {
         gameObject.SetActive(false);
-        MovementController.onDialogue += StartDialogue;
+        MovementController.onDialogue += SayMessage;
+        Complimentcista.onDialogue += SayMessage;
     }
 }

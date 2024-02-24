@@ -13,6 +13,7 @@ public class MovementController : MonoBehaviour, IMovable
     [SerializeField] private float _movementSpeed;
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private float _height;
+    [SerializeField] private float _PlayerWidth;
     [SerializeField] private float _jumpForce;
     private Vector3 _lastDirection;
     private bool _wasGrounded = false;
@@ -33,23 +34,29 @@ public class MovementController : MonoBehaviour, IMovable
         Vector3 currentVelocity = _rigidbody.velocity;
         Vector3 targetVelocity = new Vector3(direction.x, direction.y, 0);
         targetVelocity *= _movementSpeed;
-        // targetVelocity = new Vector3(direction.x, 0, 0); // Изменено здесь
         _spriteRenderer.flipX = direction.x < 0;
-
-        // Debug.Log(direction);
 
         if (IsPlayerGrounded())
         {
+            Debug.Log("isGrounded");
             _lastDirection = targetVelocity - currentVelocity;
             _rigidbody.AddForce(_lastDirection, ForceMode.VelocityChange);
         }
-
-        // _rigidbody.AddForce(targetVelocity - currentVelocity, ForceMode.VelocityChange);
     }
 
     public bool IsPlayerGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, _height, _groundLayer);
+        bool IsPlayerGrounded = false;
+
+        // КОСТЫЛЬ, который нужен для того, чтобы игрок мог ходить, если вышел за пределы платформы больше, чем на половину
+        if (Physics.Raycast(transform.position, Vector3.down, _height, _groundLayer)
+        || Physics.Raycast(transform.position + new Vector3(_PlayerWidth, 0, 0), Vector3.down, _height, _groundLayer)
+        || Physics.Raycast(transform.position + new Vector3(-_PlayerWidth, 0, 0), Vector3.down, _height, _groundLayer)
+        )
+        {
+            IsPlayerGrounded = true;
+        }
+        return IsPlayerGrounded;
     }
 
     public void Jump()

@@ -5,11 +5,12 @@ using System.Linq;
 
 public class Complimentcista : MonoBehaviour
 {
+    public delegate void DialogueHandler(Vector3 position, string text);
+    public static event DialogueHandler onDialogue;
     [SerializeField] private List<Entity> _entities;
     [SerializeField] private List<Compliment> _compliments;
-    [SerializeField] private string _defaultComplimet; 
-
-    // Событие на комплимент
+    [SerializeField] private string _defaultComplimet;
+    [SerializeField] private Transform _playerTransform;
     public void SayComplimentToGroup()
     {
         int[] grades = new int[_compliments.Count];
@@ -52,14 +53,10 @@ public class Complimentcista : MonoBehaviour
             }
         }
 
-        if (resultCompliment.ComplimentValue != "")
-        {
-            Debug.Log(resultCompliment.ComplimentValue);
-        }
-        else 
-        {
-            Debug.Log(_defaultComplimet);
-        }
+        resultCompliment.ComplimentValue = string.IsNullOrEmpty(resultCompliment.ComplimentValue) 
+                                        ? _defaultComplimet : resultCompliment.ComplimentValue;
+
+        onDialogue?.Invoke(_playerTransform.position, resultCompliment.ComplimentValue);
     }
 
     private void Awake() 
