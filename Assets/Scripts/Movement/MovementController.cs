@@ -85,6 +85,7 @@ public class MovementController : MonoBehaviour, IMovable
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _boxCollider = GetComponent<BoxCollider>();
         _boxSize = _boxCollider.size;
+        onDialogueExit?.Invoke();
     }
 
     private void FixedUpdate() 

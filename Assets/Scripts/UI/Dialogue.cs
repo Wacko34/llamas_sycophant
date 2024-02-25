@@ -29,6 +29,11 @@ public class Dialogue : MonoBehaviour
         Complimentcista.onDialogueExit += HideMessage;
     }
 
+    private void Start() 
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnDestroy()
     {
         gameObject.SetActive(false);
