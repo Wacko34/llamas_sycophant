@@ -24,6 +24,7 @@ public class MovementController : MonoBehaviour, IMovable
     private BoxCollider _boxCollider;
     private Vector3 _boxSize;
     private RaycastHit _hit;
+    private Vector3 _initialPosition;
 
     public void Move(Vector3 direction)
     {
@@ -78,6 +79,7 @@ public class MovementController : MonoBehaviour, IMovable
 
     private void Awake()
     {
+        _initialPosition = gameObject.transform.position;
         _rigidbody = gameObject.GetComponent<Rigidbody>();
         _rigidbody.freezeRotation = true;
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -104,7 +106,7 @@ public class MovementController : MonoBehaviour, IMovable
         if (other.gameObject.layer.Equals(LayerMask.NameToLayer("Spikes")))
         {
             onDialogueExit?.Invoke();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);   
+            gameObject.transform.position = _initialPosition;
         }
 
         if (other.gameObject.layer.Equals(LayerMask.NameToLayer("Llamas")))
