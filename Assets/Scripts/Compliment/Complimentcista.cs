@@ -6,11 +6,14 @@ using System.Linq;
 public class Complimentcista : MonoBehaviour
 {
     public delegate void DialogueHandler(Vector3 position, string text);
+    public delegate void DialogueExitHandler();
     public static event DialogueHandler onDialogue;
+    public static event DialogueExitHandler onDialogueExit;
     [SerializeField] private List<Entity> _entities;
     [SerializeField] private List<Compliment> _compliments;
     [SerializeField] private string _defaultComplimet;
     [SerializeField] private Transform _playerTransform;
+    private bool _inCOmplimentZone = false;
     public void SayComplimentToGroup()
     {
         int[] grades = new int[_compliments.Count];

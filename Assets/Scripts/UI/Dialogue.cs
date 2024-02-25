@@ -15,10 +15,26 @@ public class Dialogue : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    private void HideMessage()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void Awake()
     {
         gameObject.SetActive(false);
         MovementController.onDialogue += SayMessage;
+        MovementController.onDialogueExit += HideMessage;
         Complimentcista.onDialogue += SayMessage;
+        Complimentcista.onDialogueExit += HideMessage;
+    }
+
+    private void OnDestroy()
+    {
+        gameObject.SetActive(false);
+        MovementController.onDialogue -= SayMessage;
+        MovementController.onDialogueExit -= HideMessage;
+        Complimentcista.onDialogue -= SayMessage;
+        Complimentcista.onDialogueExit -= HideMessage;
     }
 }

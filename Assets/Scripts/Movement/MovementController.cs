@@ -1,10 +1,14 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 public class MovementController : MonoBehaviour, IMovable
 {
     public delegate void DialogueHandler(Vector3 position, string text);
+    public delegate void DialogueExitHandler();
     public static event DialogueHandler onDialogue;
+    public static event DialogueExitHandler onDialogueExit;
     private SpriteRenderer _spriteRenderer;
     public float MovementSpeed
     {
@@ -19,7 +23,7 @@ public class MovementController : MonoBehaviour, IMovable
     private Rigidbody _rigidbody;
     private BoxCollider _boxCollider;
     private Vector3 _boxSize;
-    private RaycastHit m_Hit;
+    private RaycastHit _hit;
 
     public void Move(Vector3 direction)
     {
@@ -36,7 +40,15 @@ public class MovementController : MonoBehaviour, IMovable
         Vector3 currentVelocity = _rigidbody.velocity;
         Vector3 targetVelocity = new Vector3(direction.x, direction.y, 0);
         targetVelocity *= _movementSpeed;
-        _spriteRenderer.flipX = _lastDirection.x < 0;
+
+        if (direction.x < 0)
+        {
+            _spriteRenderer.flipX = true;
+        }
+        else if (direction.x > 0)
+        {
+            _spriteRenderer.flipX = false;
+        }
 
         _lastDirection = targetVelocity - currentVelocity;
 
@@ -50,7 +62,7 @@ public class MovementController : MonoBehaviour, IMovable
 
     public bool IsPlayerGrounded()
     {        
-        return Physics.BoxCast(_boxCollider.bounds.center, _boxSize * 0.5f, Vector3.down, out m_Hit, transform.rotation, _height, _groundLayer) ? true : false;
+        return Physics.BoxCast(_boxCollider.bounds.center, _boxSize * 0.5f, Vector3.down, out _hit, transform.rotation, _height, _groundLayer) ? true : false;
     }
 
     public void Jump()
@@ -85,12 +97,27 @@ public class MovementController : MonoBehaviour, IMovable
             _lastDirection.y = Physics2D.gravity.y * Time.deltaTime;
         }
     }
-    // TODO: на выходе скрывать
+
     private void OnTriggerEnter(Collider other) 
     {
+        Debug.Log(other.name);
+        if (other.gameObject.layer.Equals(LayerMask.NameToLayer("Spikes")))
+        {
+            onDialogueExit?.Invoke();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);   
+        }
+
         if (other.gameObject.layer.Equals(LayerMask.NameToLayer("Llamas")))
         {
             onDialogue?.Invoke(other.gameObject.transform.position, other.gameObject.GetComponent<Entity>().Description);
+        }
+    }
+
+    private void OnTriggerExit(Collider other) 
+    {
+        if (other.gameObject.layer.Equals(LayerMask.NameToLayer("Llamas")))
+        {
+            onDialogueExit?.Invoke();
         }
     }
 }
